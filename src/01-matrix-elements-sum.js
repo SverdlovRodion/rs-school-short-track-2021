@@ -15,19 +15,20 @@
  * The result should be 9
  */
 function getMatrixElementsSum(matrix) {
-  let sum =0;
-  /*for(let j=0;j<matrix.length;j++){
-    sum +=matrix[i][j];
-  }*/
-  for(let i=0;i<matrix.length;i++){
-    for(let j=0;j<matrix.length;i++){
-      if(matrix[i-1][j]!==0){
-        sum+=matrix[i][j];
+  let res = 0;
+
+  for (let i = 0; i < matrix.length; i++) {
+    if (typeof matrix[i] === 'object') {
+      for (let j = 0; j < matrix[i].length; j++) {
+        if (i === 0) {
+          res += matrix[i][j];
+        } else if (matrix[i - 1][j] !== 0) {
+          res += matrix[i][j];
+        }
       }
     }
   }
-  return sum;
-
+  return res;
 }
 
 module.exports = getMatrixElementsSum;
